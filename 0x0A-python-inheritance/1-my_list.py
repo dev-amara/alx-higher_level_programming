@@ -1,12 +1,13 @@
 #!/usr/bin/python3
 """
-    module for a MyList class that inherits frm list
+This program creates a class called MyList that inherits of the class List
 """
 
 
 class MyList(list):
     """
-        class that inherits frm list
+    This class inherits form the class list an can print it's elements sorted
     """
+
     def print_sorted(self):
         print(sorted(self))
