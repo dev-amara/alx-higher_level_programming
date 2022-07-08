@@ -1,12 +1,12 @@
->>> f = __import__('100-matrix_mul').matrix_mul
+>>> f = __import__('101-lazy_matrix_mul').lazy_matrix_mul
 >>> f()
 Traceback (most recent call last):
 	...
-TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+TypeError: lazy_matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
 >>> f([[1,2]])
 Traceback (most recent call last):
 	...
-TypeError: matrix_mul() missing 1 required positional argument: 'm_b'
+TypeError: lazy_matrix_mul() missing 1 required positional argument: 'm_b'
 >>> f(None, None)
 Traceback (most recent call last):
 	...

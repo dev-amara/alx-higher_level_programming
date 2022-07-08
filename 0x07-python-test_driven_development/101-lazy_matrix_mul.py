@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 """Matrix multiplication module"""
 
+import numpy as np
 
-def matrix_mul(m_a, m_b):
+
+def lazy_matrix_mul(m_a, m_b):
     """Returns the product of two matrix
 
         Args:
@@ -67,16 +69,6 @@ def matrix_mul(m_a, m_b):
     else:
         raise ValueError("m_a and m_b can't be multiplied")
 
-    m = []
-    for rw_a in m_a:
-        rw_m = []
-        for ci_b in range(len(m_b[0])):
-            r = 0
-            for ri_b, rw_b in enumerate(m_b):
-                v_a = rw_a[ri_b]
-                v_b = rw_b[ci_b]
-                r += v_a * v_b
-            rw_m.append(r)
-        m.append(rw_m)
-
-    return m
+    a = np.array(m_a)
+    b = np.array(m_b)
+    return np.matmul(a, b).tolist()

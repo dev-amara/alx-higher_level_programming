@@ -1,61 +1,49 @@
-A test to for adding two inteter
+The ``add_integer`` module
+========================
 
-Import Python module + collections
->>> import sys
->>> sys.path.insert(1, '../')
->>> lib = __import__("0-add_integer")
->>> add_integer = lib.add_integer
+Using ``add_integer``
+---------------------
 
-# Normal addition test
->>> add_integer(0)
-98
->>> add_integer(-1)
-97
->>> add_integer(10.5)
-108
+First import ``add_integer`` from the ``example`` module:
 
-# Type Errors
->>> add_integer(10+5j)
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
->>> add_integer([])
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
->>> add_integer({})
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
->>> add_integer(set())
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
+	>>> add_integer = __import__('0-add_integer').add_integer 
 
->>> add_integer("")
-Traceback (most recent call last):
-...
-TypeError: a must be an integer
+	>>> add_integer(1, 2)
+	3
 
-# Two input addition type errors
->>> add_integer(10, 10+5j)
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
->>> add_integer(10, [])
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
->>> add_integer(10, {})
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
->>> add_integer(10, set())
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
+	>>> add_integer(100, -2)
+	98
+	
+	>>> add_integer(-2, 100.3)
+	98
+	
+	>>> add_integer()
+	Traceback (most recent call last):
+		...
+	TypeError: add_integer() missing 1 required positional argument: 'a'
 
->>> add_integer(10, "")
-Traceback (most recent call last):
-...
-TypeError: b must be an integer
+	>>> add_integer(2)
+	100
+
+	>>> add_integer(100.3, -2)
+	98
+
+	>>> add_integer(4, "School")
+	Traceback (most recent call last):
+		...
+	TypeError: b must be an integer
+
+	>>> add_integer(None)
+	Traceback (most recent call last):
+		...
+	TypeError: a must be an integer
+	
+	>>> add_integer(float('nan'))
+	Traceback (most recent call last):
+		...
+	ValueError: cannot convert float NaN to integer
+	
+	>>> add_integer(float('inf'))
+	Traceback (most recent call last):
+		...
+	OverflowError: cannot convert float infinity to integer

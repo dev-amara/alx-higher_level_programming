@@ -1,40 +1,32 @@
-A test to for the text_indenation function
+This is the ``5-text_indentation`` module
+=========================================
 
-Import the module
->>> import sys
->>> sys.path.insert(1, '../')
->>> lib = __import__("5-text_indentation")
->>> func = lib.text_indentation
-
-#Normal addition test
->>> func("Lorem Ipsum.?:")
-Lorem Ipsum.
+Using ``text_indentation`` function
+-----------------------------------
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+>>> text_indentation("")
+>>> text_indentation("lorem.  ipsum  ")
+lorem.
+<BLANKLINE>
+ipsum
+>>> text_indentation(2)
+Traceback (most recent call last):
+	...
+TypeError: text must be a string
+>>> text_indentation(" lorem")
+lorem
+>>> text_indentation("lorem ipsum. lorem.  ")
+lorem ipsum.
+<BLANKLINE>
+lorem.
+<BLANKLINE>
+>>> text_indentation(".")
+.
+<BLANKLINE>
+>>> text_indentation(".?:")
+.
 <BLANKLINE>
 ?
 <BLANKLINE>
 :
 <BLANKLINE>
-
-
-#Type Errors
-
->>> func(4)
-Traceback (most recent call last):
-...
-TypeError: text must be string
->>> func(12.3)
-Traceback (most recent call last):
-...
-TypeError: text must be string
->>> func([])
-Traceback (most recent call last):
-...
-TypeError: text must be string
->>> func({})
-Traceback (most recent call last):
-...
-TypeError: text must be string
->>> func(1j)
-Traceback (most recent call last):
-...
-TypeError: text must be string
