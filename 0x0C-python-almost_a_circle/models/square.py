@@ -1,44 +1,80 @@
 #!/usr/bin/python3
-"""Define Rectangle Class
-"""
-
+"""A  class Square that inherits from Rectangle."""
 from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """Module Representation of Square
-"""
+    """Module of a square
 
+
+    Use all attributes of Rectangle
+    """
     def __init__(self, size, x=0, y=0, id=None):
-        """Initialization a Square
+        """Initializes the rectangle attributes
+
+
+        Args:
+            id (int): Describes the identity of each instance
+            x (int): Describes the x position
+            y (int): Describes the y position
+            size(int): Describes the length of a square
+
+        Returns:
+            None
         """
         super().__init__(size, size, x, y, id)
+        self.size = size
 
     @property
     def size(self):
-        """module Square size getter
-        """
-        return self.width
+        """getting the size
 
+
+        Returns:
+            the length of a square
+        """
+        return(self.width)
+    
+    """The width and height must be assigned to the value of size"""
     @size.setter
     def size(self, value):
-        """module Square size setter
+        """setting the size
+
+
+        Args:
+            value (int):Describes the length of a square
+
+
+        Returns:
+            None
         """
         self.width = value
         self.height = value
 
     def __str__(self):
-        """module string represation of square
+        """Represents the Square objects as a string
+
+
+        Returns:
+            the 'informal' representing string
         """
-        return "[Square] ({:d}) {:d}/{:d} - {:d}".format(self.id,
-                                                         self.x,
-                                                         self.y,
-                                                         self.width)
+        a, b, c = self.id, self.x, self.y
+        d = self.width
+        return("[Square] ({}) {}/{} - {}".format(a, b, c, d))
 
     def update(self, *args, **kwargs):
-        """module update square
+        """ 'def update(self, *args):' alone assigns an argument to each attribute
+        'def update(self, *args, **kwargs):' assigns a key/value argument to attributes
+
+
+        Args:
+            args(list): no-keyword argument, order is important
+            kwargs(dict): key-worded argument, order is not important
+
+        Returns:
+            None
         """
-        if len(args):
+        if args is not None and len(args) != 0:
             for i, arg in enumerate(args):
                 if i == 0:
                     self.id = arg
@@ -48,17 +84,21 @@ class Square(Rectangle):
                     self.x = arg
                 elif i == 3:
                     self.y = arg
-        else:
-            for key, value in kwargs.items():
-                if hasattr(self, key) is True:
-                    setattr(self, key, value)
 
+        elif kwargs is not None and len(kwargs) != 0:
+            for key, value in kwargs.items():
+                if key == "id":
+                    self.id = value
+                elif key == "size":
+                    self.width = value
+                elif key == "x":
+                    self.x = value
+                elif key == "y":
+                    self.y = value
+    
     def to_dictionary(self):
-        """retrun dictonary
         """
-        return {
-            "id": self.id,
-            "size": self.size,
-            "x": self.x,
-            "y": self.y
-        }
+        Return:
+            the dictionary representation of a Square
+        """
+        return({"id": self.id, "size": self.size, "x": self.x, "y": self.y})
